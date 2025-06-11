@@ -1,0 +1,313 @@
+﻿@model Information
+<!DOCTYPE html>
+<html>
+	<head>
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/css/Result.css" />
+    <link rel="stylesheet" href="~/css/styles.css"/>
+	@RenderSection("Style",required:false)
+	</head>
+	<body>
+        <div class="animated-bg"></div>
+        <header>
+        <div class="logo">🪨 Rock Detector</div>
+            <nav>
+                <ul>
+                    <li><a asp-controller="Rock" asp-action="GetHomePage">Home</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class="container mt-4">
+            <div class="row justify-content-center align-items-start">
+                <div class="col-md-5 mb-4">
+                    <div class="card shadow-sm">
+                        <img src="@Model.ResultImagePath" class="card-img-top" alt="Detected Rock">
+                        <div class="card-body">
+                            <h5 class="card-title">Class Name: @Model.Name</h5>
+                            <button class="btn btn-outline-info" id="info" data-name="@Model.Name">
+                                <i class="bi bi-info-circle"></i> More Information
+                            </button>
+                                 <form asp-controller="Rock" asp-action="AddImage" method="post" enctype="multipart/form-data">
+                                   <input class="custom-file-upload" type="file" accept=".png , .jpg" name="ImageFile" id="ImageFile">
+                                   <button type="button" class="btn btn-secondary" id="SelectImgBtn">Choose Another</button>
+                                   <button class="custom-file-upload" type="submit">🔍 Analyze Image</button>
+                                   <span class="text-muted" id="Filename">No file</span>
+                                  </form>
+                  </div>
+             </div>
+         </div>
+                <div class="col-md-7">
+                    <table class="table table-bordered border-info-subtle table-hover" style="display:none;" id="infoo">
+                        <thead class="table-light">
+                            <tr>
+                                <th id="entable">Property</th>
+                                <th id="entable">Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                                <td id="entable">Rock Name</td>
+                                <td id="Name"></td>
+                            </tr>
+                            <tr>
+                                <td id="entable">Color</td>
+                                <td id="Color"></td>
+                            </tr>
+                            <tr>
+                                <td id="entable">Chemical Formula</td>
+                                <td id="Formula"></td>
+                            </tr>
+                            <tr>
+                                <td id="entable">Hardness</td>
+                                <td id="Hardness"></td>
+                            </tr>
+                            <tr>
+                                <td id="entable">Density</td>
+                                <td id="Density"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    @switch (Model.Name)
+                         {
+                             case "Pyrite":
+                        <div id="Content" style="display:none; font-size:21px;" class="col-md-10" >
+            <h4>🌍 Geological Formation</h4>
+              <ul>
+                   <li>Forms in all rock types</li>
+                   <li>Found in coal beds, quartz veins, and VMS deposits</li>
+              </ul>
+
+              <hr>
+              <h4>🏭 Industrial Use</h4>
+
+              <ul>
+                 <li>Source of sulfur dioxide for sulfuric acid</li>
+                 <li>Used in experimental lithium batteries</li>
+                 <li>Decorative use (jewelry, home)</li>
+                 <li>Research in semiconductors</li>
+              </ul>
+
+              <hr>
+              <h4>📜 History & Culture</h4>
+              <p>Used by ancient civilizations in fire-starting and ornamentation; confused with gold.</p>
+              <hr>
+
+              <h4>🌱 Environmental Concerns</h4>
+              <p>Oxidation causes acid mine drainage; must be controlled to protect water.</p>
+              <hr>
+        </div>
+                        <div id="ContentAr" style="display:none;font-size:21px;" class="col-md-10">
+                           <h3> صخر البيريت</h3>
+                           <hr />
+    <h4>🌍 التكوين الجيولوجي</h4>
+    <ul>
+        <li>يتكوَّن في جميع أنواع الصخور</li>
+        <li>يوجد في طبقات الفحم، وعروق الكوارتز، وترسيبات VMS</li>
+    </ul>
+
+    <hr>
+    <h4>🏭 الاستخدام الصناعي</h4>
+    <ul>
+        <li>مصدر لثاني أكسيد الكبريت المستخدم في حمض الكبريتيك</li>
+        <li>يُستخدم في البطاريات التجريبية التي تعتمد على الليثيوم</li>
+        <li>يُستخدم في الزينة (المجوهرات، والديكور المنزلي)</li>
+        <li>يُستخدم في أبحاث أشباه الموصلات</li>
+    </ul>
+
+    <hr>
+    <h4>📜 التاريخ والثقافة</h4>
+    <p>استُخدم من قبل الحضارات القديمة لإشعال النار والزينة؛ وقد التُبس أحيانًا بالذهب.</p>
+
+    <hr>
+    <h4>🌱 المخاوف البيئية</h4>
+    <p>الأكسدة تؤدي إلى تصريف حمضي من المناجم؛ ويجب التحكم فيه لحماية المياه.</p>
+    <hr>
+</div>
+        break;
+
+                             case "Fluorite":
+                        <div id="Content" style="display:none;font-size:21px;" class="col-md-10">
+            <h4>🌍 Geological Formation</h4>
+            <ul>
+                <li>Occurs in hydrothermal veins with ores</li>
+                <li>Found with barite, galena, quartz</li>
+                <li>Also in limestone and dolostone</li>
+            </ul>
+            <hr>
+            <h4>🏭 Applications</h4>
+            <ul>
+                <li>Flux in metallurgy</li>
+                <li>Source of hydrofluoric acid</li>
+                <li>Used in telescopes and microscopes</li>
+                <li>Occasionally as gemstones</li>
+            </ul>
+            <hr id="hr1">
+            <h4>📜 Historical Context</h4>
+            <p>Named from Latin "fluere" (to flow); used in Roman art.</p>
+            <hr id="hr1">
+            <h4>🌱 Environmental Insights</h4>
+            <p>Mining risks include fluoride pollution; must be managed carefully.</p>
+        </div>
+                        <div id="ContentAr" style="display:none;font-size:21px;" class="col-md-10">
+                            <h3> صخر الفلورايت</h3>
+                            <hr />
+
+    <h4>🌍 التكوين الجيولوجي</h4>
+    <ul>
+        <li>يتواجد في العروق الحرارية المائية مع الخامات</li>
+        <li>يوجد مع الباريت، والجالينا، والكوارتز</li>
+        <li>كما يوجد في الحجر الجيري والدولوستون</li>
+    </ul>
+    <hr>
+    <h4>🏭 الاستخدامات</h4>
+    <ul>
+        <li>عامل صَهْر في علم المعادن</li>
+        <li>مصدر لحمض الهيدروفلوريك</li>
+        <li>يُستخدم في التلسكوبات والمجاهر</li>
+        <li>يُستخدم أحيانًا كأحجار كريمة</li>
+    </ul>
+    <hr id="hr1">
+    <h4>📜 السياق التاريخي</h4>
+    <p>سُمي من الكلمة اللاتينية "fluere" والتي تعني "يتدفق"؛ استُخدم في الفن الروماني.</p>
+    <hr id="hr1">
+    <h4>🌱 الرؤى البيئية</h4>
+    <p>تشمل مخاطر التعدين تلوث الفلوريد؛ ويجب إدارتها بعناية.</p>
+</div>
+        break;
+
+                             case "Baryte":
+                        <div id="Content" style="display:none;font-size:21px;" class="col-md-10">
+        <h4>🌍 Geological Origin and Occurrence</h4>
+        <ul>
+            <li>Found in hydrothermal veins, sedimentary rocks, and residual deposits</li>
+            <li>Associated with galena, sphalerite, fluorite, and calcite</li>
+            <li>Occurs in bedded deposits with organic-rich shales and limestones</li>
+        </ul>
+        <hr id="hr1">
+        <h4>🏭 Industrial Use</h4>
+        <ul>
+            <li>Drilling muds in oil & gas industry</li>
+            <li>Filler in rubber, paints, plastics, paper</li>
+            <li>Contrast agent in medical imaging</li>
+            <li>Radiation shielding in hospitals</li>
+        </ul>
+        <hr id="hr1">
+        <h4>📜 Historical Context</h4>
+        <p>Named from Greek "barys" meaning "heavy", used in early paints and fireworks.</p>
+        <hr id="hr1">
+        <h4>🌱 Environmental Consideration</h4>
+        <p>Non-toxic and stable; improper disposal of drilling muds may affect aquatic environments.</p>
+        <hr id="hr1">
+        <h4>🌍 Major Deposits</h4>
+    </div>
+                        <div id="ContentAr" style="display:none;font-size:21px;" class="col-md-10">
+                            <h3> صخر الباريت</h3>
+                            <hr />
+
+    <h4>🌍 الأصل الجيولوجي والتوزيع</h4>
+    <ul>
+        <li>يوجد في العروق الحرارية المائية، والصخور الرسوبية، والرواسب المتبقية</li>
+        <li>يرتبط بالجالينا، والسفاليريت، والفلوريت، والكالسيت</li>
+        <li>يتواجد في رواسب طبقية مع الطفل العضوي والحجر الجيري</li>
+    </ul>
+    <hr id="hr1">
+    <h4>🏭 الاستخدام الصناعي</h4>
+    <ul>
+        <li>يُستخدم في سوائل الحفر في صناعة النفط والغاز</li>
+        <li>حشوة في المطاط، والدهانات، والبلاستيك، والورق</li>
+        <li>عامل تباين في التصوير الطبي</li>
+        <li>يُستخدم كحاجز إشعاعي في المستشفيات</li>
+    </ul>
+    <hr id="hr1">
+    <h4>📜 السياق التاريخي</h4>
+    <p>سُمي من الكلمة اليونانية "barys" التي تعني "ثقيل"، واستُخدم في الدهانات والألعاب النارية القديمة.</p>
+    <hr id="hr1">
+    <h4>🌱 الاعتبارات البيئية</h4>
+    <p>غير سام ومستقر؛ لكن التخلص غير السليم من سوائل الحفر قد يؤثر على البيئات المائية.</p>
+    <hr id="hr1">
+    <h4>🌍 الرواسب الرئيسية</h4>
+</div>
+        break;
+
+                             case "Calcite":
+                        <div id="Content" style="display:none;font-size:21px;" class="col-md-10">
+            <h4>🌍 Geological Origin and Formation</h4>
+            <ul>
+                <li>Common in limestone, marble, and chalk</li>
+                <li>Formed from biological sources like shells and corals</li>
+                <li>Found in cave systems as stalactites & stalagmites</li>
+            </ul>
+            <hr id="hr1">
+            <h4>🏭 Industrial Use</h4>
+            <ul>
+                <li>Used in cement and concrete</li>
+                <li>Soil neutralizer in agriculture</li>
+                <li>Source of lime in chemical industry</li>
+                <li>Optical use in microscopes (birefringence)</li>
+            </ul>
+            <hr id="hr2">
+            <h4>📜 Historical Significance</h4>
+            <p>Used in Egyptian and Greek architecture; main component in marble.</p>
+            <hr id="hr2">
+            <h4>🌱 Environmental Role</h4>
+            <p>Acts as carbon sink and helps regulate ocean CO₂.</p>
+           </div>
+                        <div id="ContentAr" style="display:none;font-size:21px;" class="col-md-10">
+                            <h3> صخر الكالسيت</h3>
+                            <hr />
+
+            <h4>🌍 الأصل والتكوين الجيولوجي</h4>
+            <ul>
+                <li>شائع في الحجر الجيري، والرخام، والطباشير</li>
+                <li>يتكوَّن من مصادر بيولوجية مثل الأصداف والشعاب المرجانية</li>
+                <li>يوجد في الكهوف على شكل صواعد وهوابط</li>
+            </ul>
+            <hr id="hr1">
+            <h4>🏭 الاستخدام الصناعي</h4>
+            <ul>
+                <li>يُستخدم في صناعة الإسمنت والخرسانة</li>
+                <li>عامل معادلة للتربة في الزراعة</li>
+                <li>مصدر للجير في الصناعات الكيميائية</li>
+                <li>يُستخدم بصريًا في المجاهر (الانكسار المزدوج)</li>
+            </ul>
+            <hr id="hr2">
+            <h4>📜 الأهمية التاريخية</h4>
+            <p>استُخدم في العمارة المصرية واليونانية؛ وهو المكون الرئيسي في الرخام.</p>
+            <hr id="hr2">
+            <h4>🌱 الدور البيئي</h4>
+            <p>يعمل كمخزن للكربون ويساهم في تنظيم ثاني أكسيد الكربون في المحيطات.</p>
+        </div>
+        break; 
+                        }
+
+                    <button id="translate" class="btn btn-outline-info" 
+                    onclick="ttranslate()" style="display:none;">AR</button>
+                </div>
+             </div>
+        </div>
+
+    @RenderBody()
+
+
+    <script src="~/js/information.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    <script>
+        const fileinput = document.getElementById("ImageFile");
+        const selectbtn = document.getElementById("SelectImgBtn");
+        const filename = document.getElementById("Filename");
+        selectbtn.addEventListener('click', () => fileinput.click());
+        fileinput.addEventListener('change', function () {
+            if (this.files.length > 0) {
+                filename.textContent = this.files[0].name;
+            } else {
+                filename.textContent = 'No File';
+            }
+        });</script>
+
+</body>
+</html>
+
+

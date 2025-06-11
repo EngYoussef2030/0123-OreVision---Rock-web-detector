@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #0a192f;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* خلفية متحركة بتصميم احترافي */
+.animated-bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, #233554, #0a192f);
+    animation: fadeInBg 2s ease-in-out;
+    z-index: -1;
+}
+
+@keyframes fadeInBg {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* الهيدر بتصميم جديد */
+header {
+    background: rgba(10, 25, 47, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    box-sizing: border-box;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    display: block;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #64ffda;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: 0.3s;
+    font-weight: 600;
+    padding: 12px 20px;
+    border-radius: 5px;
+}
+
+nav ul li a:hover {
+    background: #64ffda;
+    color: #0a192f;
+}
+
+/* الأقسام بتصميم متناسق */
+section {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    padding: 50px;
+}
+
+/* الصفحة الرئيسية بتصميم أنيق */
+.hero h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: white;
+}
+
+.hero p {
+    font-size: 1.2em;
+    max-width: 600px;
+    margin-top: 10px;
+    color: white;
+}
+
+.cta-button {
+    margin-top: 20px;
+    padding: 12px 24px;
+    background: #64ffda;
+    color: #0a192f;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(100, 255, 218, 0.3);
+}
+
+.cta-button:hover {
+    background: #52e6c3;
+    transform: translateY(-2px);
+}
+
+/* قسم الرفع بتصميم محسّن */
+.upload-section {
+    background: rgba(23, 42, 69, 0.8);
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    margin: 50px auto;
+    color:white;
+}
+
+.about, .contact {
+    background: rgba(23, 42, 69, 0.8);
+    padding: 15px;
+    border-radius: 5px;
+    width: 84%;
+    margin: 20px auto;
+    text-align: center;
+    font-size: 1em;
+    color: #a8b2d1;
+    min-height: auto;
+}
+
+.about p, .contact p {
+    margin: 3px 0;
+}
+
+.footer {
+    background: rgba(10, 25, 47, 0.9);
+    padding: 5px 0;
+    text-align: center;
+    font-size: 0.7em;
+    color: #8892b0;
+}
+
+.footer a {
+    color: #64ffda;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer a:hover {
+    color: #52e6c3;
+}
+
+/* زر رفع الصورة بتصميم جديد */
+.upload-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+#ImageFile {
+    display: none; /* إخفاء العنصر الأصلي */
+}
+input {
+    position: absolute;
+    display:block;
+    width: 220px;
+    height: 200px;
+    cursor: pointer;
+}
+
+.custom-file-upload {
+    position: relative;
+    width: 220px;
+    height: 50px;
+    background: linear-gradient(135deg, #64ffda, #00796b);
+    color: white;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 10px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 0 15px rgba(100, 255, 218, 0.3);
+    border: 2px solid white;
+}
+
+.custom-file-upload:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(100, 255, 218, 0.5);
+}
+
+.glow-on-hover {
+    width: 200px;
+    height: 50px;
+    border: none;
+    color: white;
+    background: linear-gradient(135deg, #64ffda, #00796b);
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: 0.3s;
+    box-shadow: 0 0 15px rgba(100, 255, 218, 0.3);
+}
+
+.glow-on-hover:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(100, 255, 218, 0.5);
+}
