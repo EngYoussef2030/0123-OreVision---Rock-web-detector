@@ -1,0 +1,1 @@
+﻿global using Graduation_Project.Models;
